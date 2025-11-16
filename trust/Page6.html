@@ -1,0 +1,22 @@
+{{ block title }}
+   結果の確認
+{{ endblock }}
+
+{{ block content }}
+{{ if player.id_in_group == 1}}
+<p>
+    あなたは{{group.give_amount}}を投資し<br>
+    経営者は{{group.back_amount}}をあなたに渡しました。<br>
+</p>
+{{ else }}
+<p>
+    投資家は{{group.give_amount}}をあなたに投資し<br>
+    あなたは{{multi_amount}}の利益をを得ました<br>
+    この中から{{group.back_amount}}を投資家に渡しました。<br>
+</p>
+{{endif}}
+<p>
+    その結果、あなたは{{player.payoff}}
+</p>
+    {{ next_button }}
+{{ endblock }}

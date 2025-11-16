@@ -1,0 +1,32 @@
+{{ block title }}
+    投資額の決定
+{{ endblock }}
+{{ block content }}
+{% if previous_rounds_info %}
+    <h3>過去のラウンド履歴</h3>
+    <ul>
+        {% for h in previous_rounds_info %}
+        <li>
+            ラウンド {{ h.round }}:
+            投資額 {{ h.give_amount }}, 
+            収益率 {{ h.multiplier }}, 
+            返戻額 {{ h.back_amount }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>経営者は過去の情報を開示していません。</p>
+{% endif %}
+
+<hr>
+{% if show_multiplier %}
+    <p>今ラウンドの収益率: {{ multiplier }}</p>
+{% else %}
+    <p>今ラウンドの収益率は非開示です。</p>
+{% endif %}
+
+<hr>
+{{ formfields }}
+    {{ next_button }}
+
+{{ endblock }}
