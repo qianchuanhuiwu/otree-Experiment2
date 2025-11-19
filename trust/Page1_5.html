@@ -1,12 +1,11 @@
 {{ block title }}
-   前ラウンド情報の公開選択
+過去情報の開示選択 - 第{{ player.round_number }}ラウンド
 {{ endblock }}
 
 {{ block content }}
-
-<h2>過去情報の開示選択 - 第{{ player.round_number }}ラウンド</h2>
-
-<p>このラウンド以前のラウンドの情報を投資家に開示しますか？</p>
+あなたは経営者に割り当てられました。<br>
+<p>このラウンド以前のラウンドの情報を投資家に開示しますか？<br>
+開示する場合、以下の「過去情報」の全てが投資家に開示されます。</p>
 
 <form method="post">
     {{ formfields }}
@@ -14,14 +13,14 @@
 </form>
 
 {% if participant.vars.history %}
-    <h3>あなたのこれまでの履歴</h3>
+    <h3>過去情報</h3>
     <ul>
         {% for h in participant.vars.history %}
         <li>
-            ラウンド {{ h.round }}: 
+            ラウンド {{ h.round }}：
             投資額 {{ h.give_amount }},
             収益率 {{ h.multiplier }},
-            返戻額 {{ h.back_amount }}
+            返戻額 {{ h.back_amount }},
         </li>
         {% endfor %}
     </ul>

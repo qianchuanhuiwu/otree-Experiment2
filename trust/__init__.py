@@ -21,18 +21,18 @@ class Group(BaseGroup):
     )
 
     back_amount=models.CurrencyField(
-        label='株主にいくら返しますか。',
+        label='投資家にいくら返戻しますか。',
     )
 
     multiplier = models.IntegerField()
 
     show_multiplier = models.BooleanField(
-        label='収益率を公開しますか？',
+        label='投資家に収益率を開示しますか？',
         choices=[[True, '開示する'], [False, '開示しない']],
     )
     
     previous_info_shown = models.BooleanField(
-        label='前ラウンドまでの情報（収益率・返戻額）を株主に公開しますか？',
+        label='前ラウンドまでの情報を投資家に開示しますか？',
         choices=[[True, '開示する'], [False, '開示しない']],
         initial=False,
         blank=True
@@ -59,10 +59,18 @@ def back_amount_choices(group:Group):
     return currency_range(cu(0),max_amount,cu(1))
     
 # PAGES
+class inst(Page):
+     @staticmethod
+     def is_displayed(player:Player):
+        return player.round_number == 1
+
 class Page1(Page):
      @staticmethod
      def is_displayed(player:Player):
         return player.round_number == 1
+
+class Page1_2(Page):
+    pass
 
 class Page1_5(Page):
     form_model = 'group'
@@ -99,7 +107,6 @@ class Page2(Page):
         if player.round_number > 1 and group.previous_info_shown:
             for r in range(1, player.round_number):
                 past_group = player.in_round(r).group
-                # past_group に give_amount/back_amount/multiplier が保存されている前提
                 previous_rounds_info.append({
                     'round': r,
                     'give_amount': past_group.give_amount,
@@ -166,4 +173,4 @@ class Page6(Page):
         
 
 
-page_sequence = [Page1,Page1_5,Page2_5,Page2_6,Page2,Page3,Page4,Page5,Page6]
+page_sequence = [inst,Page1,Page1_2,Page1_5,Page2_5,Page2_6,Page2,Page3,Page4,Page5,Page6]

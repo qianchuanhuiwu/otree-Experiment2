@@ -2,12 +2,14 @@
     投資額の決定
 {{ endblock }}
 {{ block content }}
+あなたは投資家に割り当てられました。<br>
+<br>
 {% if previous_rounds_info %}
-    <h3>過去のラウンド履歴</h3>
+    <h3>過去ラウンドの情報</h3>
     <ul>
         {% for h in previous_rounds_info %}
         <li>
-            ラウンド {{ h.round }}:
+            ラウンド {{ h.round }}：
             投資額 {{ h.give_amount }}, 
             収益率 {{ h.multiplier }}, 
             返戻額 {{ h.back_amount }}
@@ -20,9 +22,11 @@
 
 <hr>
 {% if show_multiplier %}
-    <p>今ラウンドの収益率: {{ multiplier }}</p>
+    <p>経営者は収益率を開示しました。<br>
+        今ラウンドの収益率は {{ multiplier }}倍です。</p>
 {% else %}
-    <p>今ラウンドの収益率は非開示です。</p>
+    <p>経営者は収益率を開示しませんでした。<br>
+        今ラウンドの収益率は不明です。</p>
 {% endif %}
 
 <hr>

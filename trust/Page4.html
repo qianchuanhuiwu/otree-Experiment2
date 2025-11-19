@@ -4,13 +4,10 @@
 
 {{ block content }}
 <p>
-    あなたは<B>経営者</B>に割り振られました。
+    投資家はあなたに<B>{{group.give_amount}}</B>投資しました。
 </p>
-<p>
-    投資家はあなたに{{group.give_amount}}を投資しました。
-</p>
-<p>今期の収益力は{{group.multiplier}}でした。
-    したがって{{multi_amount}}の利益をを得ました。
+<p>第{{ player.round_number }}ラウンドの収益力は<B>{{group.multiplier}}倍</B>です。。<br>
+    したがって<B>{{multi_amount}}</B>の利益をを得ました。
 </p>
     {{formfields}}
     {{ next_button }}

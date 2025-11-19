@@ -3,10 +3,9 @@
 {{ endblock }}
 
 {{ block content }}
-あなたは経営者に割り当てられました。
-このラウンドの収益率は {{ group.multiplier }} 倍です。
-
-この情報を投資家に公開しますか？
+あなたは経営者に割り当てられました。<br>
+第{{ player.round_number }}ラウンドの収益率は <B>{{ group.multiplier }} 倍</B>です。
+<br>
     {{ formfields }}
     {{ next_button }}
 {{ endblock }}
